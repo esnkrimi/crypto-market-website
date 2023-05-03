@@ -1,7 +1,7 @@
 # crypto-market-website
 NX angular  14 
 a  crypto marketing website
-Show 
+ 
 
     live crypto rates(update prices every 1seconds)
     Forex rates
