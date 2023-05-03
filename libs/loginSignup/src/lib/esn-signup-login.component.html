@@ -1,0 +1,325 @@
+<div
+  class="rounded-1"
+  id="container"
+  [@showHide]="showHide ? 'open' : 'closed'"
+>
+  <div *ngIf="loginSignup" class="card">
+    <form [formGroup]="loginForm">
+      <ul
+        class="list-group list-group-flush"
+        [ngStyle]="{
+          'background-color': data.backgroundColor,
+          color: data.textColor
+        }"
+      >
+        <li
+          class="list-group-item"
+          [ngStyle]="{
+            'background-color': data.backgroundColor,
+            color: data.textColor
+          }"
+        >
+          <div class="input-group mb-1">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">
+                <i class="fa fa-envelope"></i>
+              </span>
+            </div>
+            <input
+              [ngStyle]="{
+                'background-color': data.backgroundColor,
+                color: data.textColor
+              }"
+              type="email"
+              formControlName="email"
+              class="form-control rounded-0 border-top-0 border-right-0"
+              placeholder="Email"
+              aria-label="Email"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+        </li>
+        <li
+          class="list-group-item"
+          [ngStyle]="{
+            'background-color': data.backgroundColor,
+            color: data.textColor
+          }"
+        >
+          <div class="input-group mb-1">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">
+                <i class="fa fa-key"></i>
+              </span>
+            </div>
+            <input
+              [ngStyle]="{
+                'background-color': data.backgroundColor,
+                color: data.textColor
+              }"
+              type="Password"
+              formControlName="password"
+              class="form-control rounded-0 border-top-0 border-right-0"
+              placeholder="Password"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+        </li>
+      </ul>
+      <ul
+        class="text-center list-group list-group-flush"
+        [ngStyle]="{
+          'background-color': data.backgroundColor,
+          color: data.textColor
+        }"
+      >
+        <button
+          class="btn btn-warning w-100"
+          (click)="login()"
+          [disabled]="!loginForm.valid"
+        >
+          Login
+        </button>
+      </ul>
+      <ul
+        [ngStyle]="{
+          'background-color': data.backgroundColor,
+          color: data.textColor
+        }"
+        class="list-group list-group-flush"
+      >
+        <li
+          [ngStyle]="{
+            'background-color': data.backgroundColor,
+            color: data.textColor
+          }"
+          class="list-group-item small cursor-pointer"
+          (click)="toggle()"
+        >
+          Signup
+        </li>
+        <li
+          [ngStyle]="{
+            'background-color': data.backgroundColor,
+            color: data.textColor
+          }"
+          *ngIf="data.forgetHref.length > 1"
+          class="list-group-item small"
+        >
+          <a
+            [ngStyle]="{
+              'background-color': data.backgroundColor,
+              color: data.textColor
+            }"
+            [href]="data.forgetHref"
+          >
+            Forget password
+          </a>
+        </li>
+      </ul>
+    </form>
+  </div>
+
+  <div
+    *ngIf="!loginSignup"
+    class="card"
+    [ngStyle]="{
+      'background-color': data.backgroundColor,
+      color: data.textColor
+    }"
+  >
+    <form
+      [formGroup]="signupForm"
+      [ngStyle]="{
+        'background-color': data.backgroundColor,
+        color: data.textColor
+      }"
+    >
+      <ul
+        class="list-group list-group-flush"
+        [ngStyle]="{
+          'background-color': data.backgroundColor,
+          color: data.textColor
+        }"
+      >
+        <li
+          [ngStyle]="{
+            'background-color': data.backgroundColor,
+            color: data.textColor
+          }"
+          class="list-group-item"
+          [ngStyle]="{
+            'background-color': data.backgroundColor,
+            color: data.textColor
+          }"
+        >
+          <div
+            [ngStyle]="{
+              'background-color': data.backgroundColor,
+              color: data.textColor
+            }"
+            class="input-group mb-1"
+            [ngStyle]="{
+              'background-color': data.backgroundColor,
+              color: data.textColor
+            }"
+          >
+            <input
+              [ngStyle]="{
+                'background-color': data.backgroundColor,
+                color: data.textColor
+              }"
+              *ngIf="data.signupFields.firstname"
+              type="text"
+              formControlName="firstname"
+              class="form-control rounded-0 border-top-0 border-left-0 border-right-0"
+              placeholder="First Name"
+              aria-label="First Name"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+        </li>
+        <li
+          [ngStyle]="{
+            'background-color': data.backgroundColor,
+            color: data.textColor
+          }"
+          class="list-group-item"
+          [ngStyle]="{
+            'background-color': data.backgroundColor,
+            color: data.textColor
+          }"
+        >
+          <div
+            class="input-group mb-1"
+            [ngStyle]="{
+              'background-color': data.backgroundColor,
+              color: data.textColor
+            }"
+          >
+            <input
+              [ngStyle]="{
+                'background-color': data.backgroundColor,
+                color: data.textColor
+              }"
+              *ngIf="data.signupFields.lastname"
+              type="text"
+              formControlName="lastname"
+              class="form-control rounded-0 border-top-0 border-left-0 border-right-0"
+              placeholder="Last Name"
+              aria-label="Last Name"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+        </li>
+        <li
+          [ngStyle]="{
+            'background-color': data.backgroundColor,
+            color: data.textColor
+          }"
+          class="list-group-item"
+        >
+          <div class="input-group mb-1">
+            <input
+              [ngStyle]="{
+                'background-color': data.backgroundColor,
+                color: data.textColor
+              }"
+              *ngIf="data.signupFields.email"
+              type="email"
+              formControlName="email"
+              class="form-control rounded-0 border-top-0 border-left-0 border-right-0"
+              placeholder="Email"
+              aria-label="Last Name"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+        </li>
+        <li
+          [ngStyle]="{
+            'background-color': data.backgroundColor,
+            color: data.textColor
+          }"
+          class="list-group-item"
+        >
+          <div class="input-group mb-1">
+            <input
+              [ngStyle]="{
+                'background-color': data.backgroundColor,
+                color: data.textColor
+              }"
+              type="password"
+              formControlName="password"
+              class="form-control rounded-0 border-top-0 border-right-0 border-left-0"
+              placeholder="Password"
+              aria-label="Last Name"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+        </li>
+        <li
+          [ngStyle]="{
+            'background-color': data.backgroundColor,
+            color: data.textColor
+          }"
+          class="list-group-item"
+        >
+          <div class="input-group mb-1">
+            <input
+              [ngStyle]="{
+                'background-color': data.backgroundColor,
+                color: data.textColor
+              }"
+              type="number"
+              *ngIf="data.signupFields.mobile"
+              formControlName="mobile"
+              class="form-control rounded-0 border-top-0 border-right-0 border-left-0"
+              placeholder="Mobile"
+              aria-label="mobile"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+        </li>
+      </ul>
+
+      <ul
+        [ngStyle]="{
+          'background-color': data.backgroundColor,
+          color: data.textColor
+        }"
+        class="list-group list-group-flush"
+      >
+        <button
+          class="btn btn-warning w-100"
+          (click)="signup()"
+          [disabled]="loginForm.valid"
+        >
+          signup
+        </button>
+      </ul>
+      <ul
+        [ngStyle]="{
+          'background-color': data.backgroundColor,
+          color: data.textColor
+        }"
+        [ngStyle]="{
+          'background-color': data.backgroundColor,
+          color: data.textColor
+        }"
+        class="list-group list-group-flush"
+      >
+        <li
+          [ngStyle]="{
+            'background-color': data.backgroundColor,
+            color: data.textColor
+          }"
+          class="list-group-item small cursor-pointer"
+          (click)="toggle()"
+        >
+          Have an account
+        </li>
+      </ul>
+    </form>
+  </div>
+</div>

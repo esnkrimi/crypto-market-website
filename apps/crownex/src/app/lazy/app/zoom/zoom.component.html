@@ -1,0 +1,92 @@
+<div class="bg-light text-dark">
+  <div
+    *ngIf="dataCallback && this.destinationCoin"
+    class="text-xxlarge d-flex w-25"
+  >
+    <span class="p-1">
+      <img
+        class="img"
+        [src]="'https://www.cryptocompare.com' + dataCallback['IMAGEURL']"
+      />
+    </span>
+    <span class="p-1 text-dark">
+      {{ destinationCoin }}
+    </span>
+  </div>
+  <div class="text-primary">
+    <span class="text-dark">
+      {{ dataCallback['PRICE'] }}
+    </span>
+    <span class="small" priceDirective [sign]="dataCallback['CHANGE24HOUR'][2]">
+      ({{
+        percent(dataCallback['CHANGE24HOUR'], dataCallback['PRICE'])
+          | number: '1.2-2'
+      }}
+      %)
+    </span>
+  </div>
+  <div class="row p-3">
+    <div class="col-md-6">
+      <nx-zoom-rates-board
+        [source]="currencies"
+        [destination]="destinationCoin"
+        [textColor]="textColor"
+        [themeColor]="themeColor"
+        [fullDataShow]="deviceLarge"
+        [urlPrefix]="urlPrefix"
+        [columns]="columns"
+      >
+      </nx-zoom-rates-board>
+    </div>
+    <div class="col-md-6 p-2">
+      <nx-market-information [params]="destinationCoin"></nx-market-information>
+    </div>
+  </div>
+  <div class="row p-3">
+    <div class="col-md-6">
+      <nx-market-chart [params]="destinationCoin"></nx-market-chart>
+    </div>
+    <div class="col-md-6">
+      <div class="bg-dark text-light p-2">News about {{ destinationCoin }}</div>
+
+      <div class="flex-nowrap mb-2 p-1">
+        <div
+          class=""
+          *ngFor="
+            let item of dataNews
+              | paginate: { id: 'id', itemsPerPage: 5, currentPage: pageNumber }
+          "
+        >
+          <div class="row flex-nowrap m-2" *ngIf="item">
+            <div style="flex-basis: 10%" *ngIf="item" class="p-2">
+              <img [src]="item.imageurl" class="w-100 rounded" />
+            </div>
+            <div style="flex-basis: 90%" class="p-2">
+              <span class="w-100">
+                <a
+                  [href]="item.url"
+                  target="_blank"
+                  class="text-dark text-decoration-none"
+                >
+                  {{ item.title }}
+                </a>
+              </span>
+              <br />
+              <span class="w-100 text-orange small">
+                {{ item.published_on * 1000 | date }}
+              </span>
+            </div>
+          </div>
+        </div>
+        <pagination-controls
+          [autoHide]="false"
+          [directionLinks]="false"
+          class="ngx-pagination"
+          [id]="'id'"
+          (pageChange)="pageNumber = $event"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+  <div id="chart"></div>
+</div>

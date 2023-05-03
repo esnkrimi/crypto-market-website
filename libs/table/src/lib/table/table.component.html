@@ -1,0 +1,41 @@
+<div class="containers w-100">
+  <div class="d-flex w-100 flex-nowrap text-left hover">
+    <div
+      class="bg-light text-left fw-bold"
+      (click)="sort(j)"
+      *ngFor="let j of headTitle"
+    >
+      {{ j }}
+    </div>
+  </div>
+  <div
+    class="d-flex flex-nowrap w-100 text-center hover prices-frame crypto-row"
+    *ngFor="
+      let i of data
+        | paginate: { id: id, itemsPerPage: 10, currentPage: pageNumber }
+    "
+  >
+    <div
+      [fieldDirective]="j"
+      [class.border]="id !== 'news'"
+      [class.firstLetter]="id === 'crypto' && j === 'FROMSYMBOL'"
+      [class.title]="id === 'currency' && j === 'FROMSYMBOL'"
+      class="w-100 text-left dir bg-light text-dark border-bottom-light border-0"
+      (click)="focus(i)"
+      [style.flex-basix]="'100px'"
+      *ngFor="let j of fields"
+      [class.text-right]="!device && j === 'PRICE'"
+    >
+      {{ i[j] | price }}
+    </div>
+  </div>
+  <div class="outer-div text-left m-3">
+    <pagination-controls
+      [autoHide]="false"
+      [directionLinks]="false"
+      class="ngx-pagination"
+      [id]="id"
+      (pageChange)="pageNumber = $event"
+    ></pagination-controls>
+  </div>
+</div>

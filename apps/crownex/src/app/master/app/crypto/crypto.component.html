@@ -1,0 +1,35 @@
+<div class="div-header text-left bg-dark text-white p-1">
+  <ng-content></ng-content>
+</div>
+
+<div class="text-left bg-light">
+  <form [formGroup]="form">
+    <input class="input m-4 p-2" formControlName="inputChar" #inputAlphebatic />
+  </form>
+  <div class="frame">
+    <!-- lib-progressBar is myown library : 
+      https://www.npmjs.com/package/luxury-progress-bar
+      https://wwwnpmjs.com/~esnkrimi
+      -->
+    <lib-progressBar
+      [color]="'ff555'"
+      [fade]="true"
+      *ngIf="loading; else elseTmp"
+    ></lib-progressBar>
+
+    <ng-template #elseTmp>
+      <nx-rates-board
+        [source]="source"
+        [destination]="destination"
+        [textColor]="textColor"
+        [themeColor]="themeColor"
+        [fullDataShow]="DEVICE_IS_PC"
+        [urlPrefix]="urlPrefix"
+        [columns]="columns"
+      >
+      </nx-rates-board>
+    </ng-template>
+  </div>
+</div>
+
+<div class="w-100 text-center"></div>

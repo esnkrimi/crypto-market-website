@@ -1,0 +1,29 @@
+<div class="div-header text-left bg-dark text-white p-1">
+  <ng-content></ng-content>
+</div>
+<lib-progressBar
+  [color]="'ff555'"
+  [fade]="true"
+  *ngIf="loading; else elseTmp"
+></lib-progressBar>
+<ng-template #elseTmp>
+  <div class="bg-light">
+    <form [formGroup]="form">
+      <input
+        placeholder="Category"
+        class="input m-4 p-2"
+        formControlName="inputChar"
+        #inputAlphebatic
+      />
+    </form>
+  </div>
+  <div class="bg-white">
+    <nx-news-table
+      [DEVICE_IS_PC]="DEVICE_IS_PC"
+      [id]="'news'"
+      [data]="data"
+      [fields]="fields"
+    >
+    </nx-news-table>
+  </div>
+</ng-template>

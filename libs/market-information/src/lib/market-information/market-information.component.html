@@ -1,0 +1,16 @@
+<div class="text-center w-100 p-2">
+  <h2>Market Information</h2>
+</div>
+<div *ngIf="detailFields">
+  <div
+    class="row text-left m-1 border-bottom p-1"
+    *ngFor="let i of detailFields"
+  >
+    <div style="flex-basis: 50%" class="text-muted">
+      {{ i }}
+    </div>
+    <div style="flex-basis: 50%" *ngIf="val && dataInfo">
+      {{ dataInfo[i] | price }}
+    </div>
+  </div>
+</div>

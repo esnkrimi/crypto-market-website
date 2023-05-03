@@ -1,0 +1,19 @@
+<div class="div-header text-left bg-dark text-white p-1">
+  <ng-content></ng-content>
+</div>
+<lib-progressBar
+  [color]="'ff555'"
+  [fade]="true"
+  *ngIf="loading; else elseTmp"
+></lib-progressBar>
+<ng-template #elseTmp>
+  <div class="bg-white w-100">
+    <nx-table
+      [id]="'calendar'"
+      [data]="data"
+      [fields]="fields"
+      [headTitle]="fields"
+    >
+    </nx-table>
+  </div>
+</ng-template>

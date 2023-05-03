@@ -1,0 +1,283 @@
+<div
+  [@showHide]="formSubmit ? 'show' : 'hide'"
+  *ngIf="formSubmit"
+  (click)="formSubmit = false"
+  class="dialogue"
+>
+  <div class="inner bg-warning"><p>Submitted succesfull !</p></div>
+</div>
+
+<div id="footer" class="bg-dark w-100 text-white text-center">
+  <div class="bg-dark w-100 text-white row">
+    <div class="col-md-2">
+      <nx-panel-rows></nx-panel-rows>
+    </div>
+    <div class="col-md-7">
+      <div *ngIf="DEVICE_IS_PC">
+        <div class="border-bottom">TRADE WITH BROKERS</div>
+        <div class="row flex-nowrap">
+          <div style="flex-basis: 14%">
+            <div>
+              <a target="blank" href="https://bitcoinira.com/">
+                <img
+                  src="data:image/png;base64,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"
+                />
+              </a>
+            </div>
+
+            <div>
+              <a target="blank" href="https://public.com/">
+                <img
+                  src="https://www.investopedia.com/thmb/eYxrH2iw0VnBRzU5CEyO3UV1J0o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Public.com-9d64cd7c952c494fbe91eaf028b85a00.jpg"
+                />
+              </a>
+            </div>
+            <div>
+              <a target="blank" href="https://us.etrade.com/home">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/ETrade.svg/2560px-ETrade.svg.png"
+                />
+              </a>
+            </div>
+          </div>
+
+          <div style="flex-basis: 14%">
+            <div>
+              <a target="blank" href="https://www.capitalone.com/">
+                <img
+                  src="https://1000logos.net/wp-content/uploads/2018/11/Capital-One-Logo.png"
+                />
+              </a>
+            </div>
+
+            <div>
+              <a target="blank" href="https://www.ally.com/">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Ally_Financial.svg/1280px-Ally_Financial.svg.png"
+                />
+              </a>
+            </div>
+
+            <div>
+              <a target="blank" href="https://www.fpmarkets.com/">
+                <img
+                  src="https://a-invdn-com.investing.com/Broker_Button_New/Fab120/FPM_banner-logoblue-120x60.png"
+                />
+              </a>
+            </div>
+          </div>
+          <div style="flex-basis: 14%">
+            <div>
+              <a target="blank" href="https://www.schwab.com/brokerage">
+                <img
+                  src="data:image/png;base64,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"
+                />
+              </a>
+            </div>
+
+            <div>
+              <a target="blank" href="https://www.fidelity.com/">
+                <img
+                  src="https://cdn.cdnlogo.com/logos/f/50/fidelity-investments.svg"
+                />
+              </a>
+            </div>
+
+            <div>
+              <a target="blank" href="https://robinhood.com/">
+                <img
+                  src="https://blog.logomyway.com/wp-content/uploads/2022/02/robinhood-logo.png"
+                />
+              </a>
+            </div>
+          </div>
+
+          <div style="flex-basis: 14%">
+            <div>
+              <a
+                target="blank"
+                href="https://www.investing.com/jp.php?v2=NnYybGA3MGpkNW1nYjhlYWc0M29lZzc8NiFjMTowMEw0QzcTNiYzdDNpbzBhaGRtZGVjZTZmYSVnJzc2MTQ3dDZzMmw="
+              >
+                <img
+                  src="https://a-invdn-com.investing.com/Broker_Button_New/Fab120/Exness_Logo_new.png"
+                />
+              </a>
+            </div>
+
+            <div>
+              <a target="blank" href="https://www.xm.com">
+                <img
+                  src="https://a-invdn-com.investing.com/Broker_Button_New/Fab120/fab_7127653.png"
+                />
+              </a>
+            </div>
+
+            <div>
+              <a target="blank" href="https://www.fxpro.com/">
+                <img
+                  src="https://a-invdn-com.investing.com/Broker_Button_New/Fab120/fab_73514486.jpg"
+                />
+              </a>
+            </div>
+          </div>
+
+          <div style="flex-basis: 14%">
+            <div>
+              <a target="blank" href="https://www.ally.com/invest/">
+                <img
+                  src="https://www.investopedia.com/thmb/AkqNTkjYbm98KOtQLTrkccm4twY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/ally-invest-c48d96a004874a45b799053e563fbe3a.png"
+                />
+              </a>
+            </div>
+
+            <div>
+              <a
+                target="blank"
+                href="https://refer.sofi.com/c/102401/1502415/11190?subId1=2d75d309fd1a4df5ba6c572a2e7546dc&sharedid=39258&adcampaigngroup=wealth&adnetwork=BD"
+              >
+                <img
+                  src="https://media.zenfs.com/en/business-wire.com/34746c9d2b57bd732af8e9da9f099cbf"
+                />
+              </a>
+            </div>
+
+            <div>
+              <a target="blank" href="https://gemini.com/">
+                <img
+                  src="data:image/png;base64,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"
+                />
+              </a>
+            </div>
+          </div>
+
+          <div style="flex-basis: 14%">
+            <div>
+              <a target="blank" href="https://www.facet.com/">
+                <img
+                  src="data:image/png;base64,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"
+                />
+              </a>
+            </div>
+
+            <div>
+              <a target="blank" href="https://www.zeromarkets.com/">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Zeo_Agency_Logo_-_Full_Vector_SVG_Format.svg/1024px-Zeo_Agency_Logo_-_Full_Vector_SVG_Format.svg.png"
+                />
+              </a>
+            </div>
+
+            <div>
+              <a target="blank" href="https://med.etoro.com/">
+                <img
+                  src="https://a-invdn-com.investing.com/Broker_Button_New/Fab120/eToro_FAB.jpg"
+                />
+              </a>
+            </div>
+          </div>
+          <div style="flex-basis: 14%">
+            <div>
+              <a target="blank" href="https://www.interactivebrokers.com/">
+                <img
+                  src="https://download.logo.wine/logo/Interactive_Brokers/Interactive_Brokers-Logo.wine.png"
+                />
+              </a>
+            </div>
+
+            <div>
+              <a target="blank" href="https://www.merrilledge.com/">
+                <img
+                  src="https://logos-world.net/wp-content/uploads/2021/02/Merrill-Lynch-Logo.png"
+                />
+              </a>
+            </div>
+            <div>
+              <a
+                target="blank"
+                href="https://www.investing.com/jp.php?v2=NnYybGA3MGpkNW1nYjhlYWc0M29lZzc8NiFjMTowMEw0QzcTNiYzdDNpbzBhaGRtZGVjZTZmYSVnJzc2MTQ3dDZzMmw="
+              >
+                <img
+                  src="https://a-invdn-com.investing.com/Broker_Button_New/Fab120/Exness_Logo_new.png"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+        <br /><br />
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <div class="w-50 flex-nowrap row">
+            <div style="flex-basis: 90%">
+              <input
+                class="input-email"
+                placeholder="  Subscribe News"
+                formControlName="email"
+              />
+            </div>
+            <div style="flex-basis: 10%">
+              <button
+                type="button"
+                class="btn btn-warning"
+                (click)="submit()"
+                [disabled]="!form.valid"
+              >
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-3 text-left">
+      <div>CONTACTUS</div>
+      <div>INSTAGRAM</div>
+      <div>WHATSAPP</div>
+      <br /><br />
+      <br /><br />
+      <br /><br />
+      <nx-search
+        class="m-4"
+        [bgColor]="'RGBA(33,37,41,var(--bs-bg-opacity,1))'"
+      ></nx-search>
+    </div>
+  </div>
+  <div class="w-100 d-flex text-center">
+    <hr class="w-100 justify-center text-muted" />
+  </div>
+  Allright reserved @2022
+</div>
+<div class="cookie" [@showHide]="CookieSHow === 'NOT' ? 'show' : 'hide'">
+  <div class="w-100 row d-flex">
+    <div class="col-md-5 nav">
+      <h2 class="text-white">We Care About Your Privacy</h2>
+      <div class="d-flex flexwrap text-white">
+        We and our partners store and/or access information on a device, such as
+        unique IDs in cookies to process personal data. You may accept or manage
+        your choices by clicking below, including your right to object where
+        legitimate interest is used, or at any time in the privacy policy page.
+        These choices will be signaled to our partners and will not affect
+        browsing data.
+      </div>
+    </div>
+    <div class="col-md-5 nav">
+      <h2 class="text-white">We Care About Your Privacy</h2>
+      <div class="text-white">
+        Use precise geolocation data. Actively scan device characteristics for
+        identification. Store and/or access information on a device.
+        Personalised ads and content, ad and content measurement, audience
+        insights and product development.
+      </div>
+    </div>
+    <div style="flex-basis: 14%">
+      <div>
+        <button (click)="handleCookie(true)" class="btn btn-primary w-100">
+          Accept
+        </button>
+      </div>
+      <div>
+        <button (click)="handleCookie(true)" class="btn btn-warning w-100">
+          Decline
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

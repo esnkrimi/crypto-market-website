@@ -1,0 +1,21 @@
+<div class="bg-dark text-left">
+  <div class="master-frame">
+    <div class="w-100 rates p-3" *ngFor="let i of data | keyvalue">
+      <div class="w-100">
+        <div
+          [routerLink]="['/lazy/zoom/', i.key]"
+          class="cursor-pointer text-small text-center text-orange"
+        ></div>
+        <div
+          [routerLink]="['/lazy/zoom/', i.key]"
+          class="cursor-pointer text-large text-left text-orange"
+        >
+          {{ i.key }}/USD
+        </div>
+        <div class="price text-left text-light">
+          {{ i.value['USD']['PRICE'] | price: 200 }} $
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

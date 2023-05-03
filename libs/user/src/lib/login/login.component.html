@@ -1,0 +1,21 @@
+<div
+  class="confirm text-center d-fixed w-100 h-100 bg-light opacity-80 text-white"
+  *ngIf="showConfirm"
+>
+  <div class="w-25 d-inline-block bg-white text-dark m-5 p-5">
+    Your registration is susseccfull !
+  </div>
+  <div>
+    <button (click)="hideConfirm()">Retrun</button>
+  </div>
+</div>
+<div class="w-100 mt-3 text-center">
+  <div class="d-inline-block" [class.w-25]="DEVICE_IS_PC">
+    <esn-signup-login
+      [data]="data"
+      (callbackLogin)="callbackLogin($event)"
+      (callbackSignup)="callbackSignup($event)"
+    >
+    </esn-signup-login>
+  </div>
+</div>

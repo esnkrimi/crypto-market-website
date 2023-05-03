@@ -1,0 +1,71 @@
+<div class="text-center d-static">
+  <br />
+  <div style="--width: 90%" class="inputs parent">
+    <div class="father">
+      <div
+        *ngIf="loadingProgress"
+        class="child bg-red p-1 text-white cursor-pointer rounded-circle rounded-left"
+      >
+        <i class="fa fa-stop loading-icon"></i>
+        Loading...
+      </div>
+      <div class="bg-primary">
+        <input
+          [ngStyle]="{ 'background-color': bgColor }"
+          placeholder=" &nbsp; &nbsp; &nbsp; Find in our content..."
+          [(ngModel)]="input"
+          type="text"
+          #autocomplete
+          class="input text-center text-white w-100"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="frames d-absolute">
+    <div class="inner text-center p-1 frame-search">
+      <ng-container
+        *ngTemplateOutlet="dataTmp; context: myContext"
+      ></ng-container>
+      <ng-template #dataTmp let-loading>
+        <div *ngIf="input">
+          <div *ngIf="input.length > 0" (click)="input = ''">
+            <div
+              *ngIf="!loading && data"
+              [routerLink]="'lazy/zoom/' + data[0]"
+              class="cursor-pointer bg-secondary"
+            >
+              <div *ngIf="data[0]" class="title text-dark text-left">
+                In Coins
+              </div>
+              <div>
+                <div class="text-dark">
+                  <span>
+                    {{ data[0] }}
+                  </span>
+                  <span class="text-muted text-small"> {{ data[2] }}$ </span>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="dataNews" class="title text-dark text-left">
+              In news
+            </div>
+            <div
+              *ngFor="let i of dataNews"
+              class="bg-secondary text-left text-small p-2 cursor-pointer"
+            >
+              <a [href]="i.url" target="_blank" class="text-dark">
+                <span>{{ i.title }}</span>
+                <span class="p-2 text-muted">{{
+                  i.published_on * 1000 | date
+                }}</span>
+              </a>
+            </div>
+            <div>
+              <br />
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

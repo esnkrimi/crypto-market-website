@@ -1,0 +1,87 @@
+@import url('https://unpkg.com/bootstrap@5.2.2/dist/css/bootstrap.min.css')
+
+.flex-item
+    flex-basis: var(--width)
+.d-flex
+    flex-wrap: nowrap
+.logo
+    font-family: Verdana
+    font-size: 1.2em
+    position: relative
+    overflow: hidden
+.animated-char
+    font-size: 1.5em
+    animation: trnaslat var(--h) infinite
+    animation-iteration-count: 1
+    margin: 0.2em
+    animation-delay: 1s
+@keyframes trnaslat
+    0%
+        transform: translate(0px,-3px)
+        color: yellow
+        transform: scale(1.8)
+    20%
+        transform: translate(0px,-2px)
+        color: white
+        transform: scale(3.6)
+    50%
+        transform: translate(0px,0px)
+        color: yellow
+        transform: scale(5.5)
+    70%
+        transform: translate(0px,1px)
+        color: white
+        transform: scale(3.2)
+    100%
+        transform: translate(0px,3px)
+        transform: scale(1)
+.div-header
+    height: 6em
+.div-search
+    transition: all 0.2s
+.parent
+    display: flex
+    justify-content: center
+.child>div
+    flex: 1
+.child
+    display: flex
+@media (max-width: 800px)
+    .child
+        width: 100% !important
+.bd-highlight
+    margin: auto
+.hr
+    background-color: orange
+    height: 0.4em
+    z-index: 50
+    opacity: 1
+    margin-bottom: 4px
+.header-top>span
+    margin: 0.5em
+    color: #605f5f
+    font-size: 0.8em
+.header-div
+    display: flex
+    justify-content: center
+    text-align: center
+.bg-secondary
+    background-color: #ffda37d5 !important
+    text-align: left
+    color: #5a5a5a
+span
+    cursor: pointer
+.rotate-again
+    padding: 0.8em
+.rotate-again:hover
+    color:#000
+.flex-item
+    flex-basis: 25% !important
+a
+    text-decoration: none
+.d-relative
+    position: relative
+.inner
+    display: inline-block
+span
+    font-size: 1vm !important    

@@ -1,0 +1,40 @@
+<div class="containers w-100 bg-light text-light">
+  <div
+    class="w-100 text-center bg-light text-light"
+    *ngFor="
+      let i of data
+        | paginate: { id: id, itemsPerPage: 5, currentPage: pageNumber }
+    "
+  >
+    <div class="row border-bottom-light" (click)="focus(i)">
+      <div class="col-md-12">
+        <div class="d-flex w-90">
+          <div style="flex-basis: 5%">
+            <img [src]="i.imageurl" class="w-100" />
+          </div>
+          <div class="info" style="flex-basis: 95%">
+            <div class="m-2 paragraph text-dark">
+              {{ i.title }}
+            </div>
+            <div class="text-orange m-2">
+              {{ i.published_on * 1000 | date }}
+            </div>
+            <div class="text-muted m-2">categories: {{ i.categories }}</div>
+            <div class="text-left w-100 paragraph m-2 text-muted small">
+              {{ i.body?.substr(0, length) }} ...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="outer-div text-left m-3 bg-light text-dark">
+    <pagination-controls
+      [autoHide]="false"
+      [directionLinks]="false"
+      class="ngx-pagination text-light"
+      [id]="id"
+      (pageChange)="pageNumber = $event"
+    ></pagination-controls>
+  </div>
+</div>

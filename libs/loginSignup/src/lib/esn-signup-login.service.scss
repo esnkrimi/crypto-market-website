@@ -1,0 +1,25 @@
+.form-control:focus {
+    outline: none 0px red !important;
+    border: none !important;
+
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.animated,
+#container {
+    animation: cross 0.1s forwards;
+}
+
+@keyframes cross {
+    from {}
+
+    to {
+        transform: rotateZ(360deg)
+    }
+}

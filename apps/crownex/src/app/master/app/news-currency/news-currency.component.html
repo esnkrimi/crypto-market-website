@@ -1,0 +1,24 @@
+<div class="row flex-nowrap mb-2 p-1 bg-light">
+  <div class="col-md-3" *ngFor="let item of vars">
+    <div class="row flex-nowrap m-2" *ngIf="this[item]">
+      <div *ngIf="this[item]" class="col-md-3 p-2">
+        <img [src]="this[item].imageurl" class="w-100 rounded" />
+      </div>
+      <div class="col-md-9 p-2">
+        <span class="w-100">
+          <a
+            [href]="this[item].url"
+            target="_blank"
+            class="text-dark text-decoration-none"
+          >
+            {{ this[item].title }}
+          </a>
+        </span>
+        <br />
+        <span class="w-100 text-orange small">
+          {{ this[item].published_on * 1000 | date }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

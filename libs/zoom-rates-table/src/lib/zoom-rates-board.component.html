@@ -1,0 +1,62 @@
+<span class="k1"> </span>
+<div class="w-100" [ngStyle]="{ 'background-color': themeColor }">
+  <div class="d-flex flex-nowrap">
+    <div [ngStyle]="{ color: textColor }">CRYPTOS</div>
+    <div [ngStyle]="{ color: textColor }">TO {{ destination }}</div>
+    <div *ngIf="DEVICE_IS_PC" [ngStyle]="{ color: textColor }">INVERSE</div>
+    <div *ngIf="DEVICE_IS_PC" [ngStyle]="{ color: textColor }">
+      {{ columns[0] }}
+    </div>
+    <div *ngIf="DEVICE_IS_PC" [ngStyle]="{ color: textColor }">
+      {{ columns[1] }}
+    </div>
+  </div>
+  <div *ngIf="array">
+    <div class="d-flex flex-nowrap border-dark" *ngFor="let i of array">
+      <div
+        class="small fw-bold"
+        [ngStyle]="{ color: themeColor, 'background-color': textColor }"
+      >
+        <span>
+          <img [src]="i[8]" class="w-15 rounded-circle" />
+        </span>
+        <span>
+          {{ i[0] }}
+        </span>
+      </div>
+      <div
+        class="small fw-bold"
+        [ngStyle]="{ color: i[3], 'background-color': textColor }"
+      >
+        {{ i[1] }}
+        <i
+          class="fa"
+          [class.arrow-up]="i[3] === 'green'"
+          [class.arrow-down]="i[3] === 'red'"
+          [ngStyle]="{ color: i[3] }"
+        ></i>
+      </div>
+      <div
+        *ngIf="DEVICE_IS_PC"
+        class="small fw-bold"
+        [ngStyle]="{ 'background-color': textColor }"
+      >
+        {{ i[2] | number: '.0-8' }}
+      </div>
+      <div
+        *ngIf="DEVICE_IS_PC"
+        class="small"
+        [ngStyle]="{ color: '#222', 'background-color': textColor }"
+      >
+        {{ i[4] | price }}
+      </div>
+      <div
+        *ngIf="DEVICE_IS_PC"
+        class="small"
+        [ngStyle]="{ color: '#222', 'background-color': textColor }"
+      >
+        {{ i[5] | price }}
+      </div>
+    </div>
+  </div>
+</div>

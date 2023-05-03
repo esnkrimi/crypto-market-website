@@ -1,0 +1,63 @@
+<lib-progressBar
+  [color]="'ff555'"
+  [fade]="true"
+  *ngIf="loading; else elseTmp"
+></lib-progressBar>
+<ng-template #elseTmp>
+  <div class="bg-dark">
+    <br />
+    <br />
+    <div class="d-flex master-frame">
+      <div class="w-100 rates" *ngFor="let i of data | keyvalue">
+        <div class="">
+          <div
+            [routerLink]="['/lazy/zoom/', i.key]"
+            class="cursor-pointer text-small text-center text-orange"
+          >
+            <img
+              class="w-25"
+              [src]="
+                'https://www.cryptocompare.com' + i.value['USD']['IMAGEURL']
+              "
+            />
+          </div>
+          <div
+            [routerLink]="['/lazy/zoom/', i.key]"
+            class="cursor-pointer text-small text-center text-orange"
+          >
+            {{ i.key }}/USD
+          </div>
+          <div class="price text-center text-light">
+            {{ i.value['USD']['PRICE'] | price: 200 }} $
+          </div>
+        </div>
+        <div
+          priceDirective
+          [sign]="i.value['USD']['CHANGE24HOUR'][2]"
+          class="directive text-center flex-wrap w-100 m-2"
+        >
+          {{
+            percent(i.value['USD']['CHANGE24HOUR'], i.value['USD']['PRICE'])
+              | number: '1.2-2'
+          }}
+          %
+        </div>
+      </div>
+    </div>
+    <div class="newsFrame" *ngIf="newsItem">
+      <a *ngIf="newsItem.title" [href]="newsItem.link" target="_blank">
+        <div class="row flex-nowrap">
+          <div class="text-center" style="flex-basis: 3%">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/4/41/Red_circle.gif"
+              class="w-25"
+            />
+          </div>
+          <div class="news" style="flex-basis: 97%">
+            {{ newsItem.title }}
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</ng-template>

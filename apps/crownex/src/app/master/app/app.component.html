@@ -1,0 +1,24 @@
+<div
+  *ngIf="loading"
+  class="progress d-flex position-fixed w-100 h-100 bg-light"
+>
+  <div class="w-100">
+    <lib-progressBar [color]="'ff555'" [fade]="true"></lib-progressBar>
+  </div>
+  <div class="wait text-light w-100 text-center">Please Wait ...</div>
+</div>
+<div class="text-center w-100 h-100 bg-light">
+  <div
+    [class.w-75]="DEVICE_IS_PC"
+    [class.w-100]="!DEVICE_IS_PC"
+    class="inner bg-light"
+  >
+    <nx-panel (loaded)="loaded($event)"></nx-panel>
+    <nx-crypto [DEVICE_IS_PC]="DEVICE_IS_PC"></nx-crypto>
+    <nx-news-currency *ngIf="DEVICE_IS_PC">CURRENCIES</nx-news-currency>
+    <nx-currency [DEVICE_IS_PC]="DEVICE_IS_PC">CURRENCIES</nx-currency>
+    <nx-news [DEVICE_IS_PC]="DEVICE_IS_PC">NEWS</nx-news>
+    <nx-footer [DEVICE_IS_PC]="DEVICE_IS_PC"></nx-footer>
+    <!--<nx-calendar>CALENDAR</nx-calendar>-->
+  </div>
+</div>

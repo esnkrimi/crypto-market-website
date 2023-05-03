@@ -1,0 +1,26 @@
+<div class="bg-white w-100">
+  <div class="w-100 text-center">
+    <div
+      [class.chart-header]="testCond"
+      class="text-left fw-bold div-header chartHeaders bg-dark text-white p-2"
+      #chartHeader
+    >
+      TO {{ destinationCoin }}
+    </div>
+    <span
+      class="cursor-pointer p-2 m-2 text-center"
+      (click)="chartType = 'bar'; initializeChart()"
+    >
+      <i class="cursor-pointer fa fa-bar-chart fa-2x"></i>
+    </span>
+    <span
+      class="cursor-pointer text-center p-2"
+      (click)="chartType = 'line'; initializeChart()"
+    >
+      <i class="cursor-pointer fa fa-line-chart fa-2x"></i>
+    </span>
+  </div>
+  <canvas class="my-4 w-100" id="canvas" width="900" height="380">
+    {{ chart }}</canvas
+  >
+</div>

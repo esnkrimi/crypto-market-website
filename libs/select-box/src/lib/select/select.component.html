@@ -1,0 +1,4 @@
+<select class="m-3 p-1 fw-bold" (change)="valueChanged($event)">
+  <option>...</option>
+  <option *ngFor="let i of data" [value]="i">{{ i }}</option>
+</select>

@@ -1,0 +1,15 @@
+.progress {
+  z-index: 1500;
+  opacity: 100%;
+}
+.wait {
+  top: 50% !important;
+  height: 50%;
+  position: fixed;
+  font-size: 2em;
+  vertical-align: middle;
+  text-align: center;
+}
+.inner {
+  display: inline-block;
+}
